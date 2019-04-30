@@ -144,4 +144,29 @@ app.on("ready", () => {
 
 });
 
+app.on("message", (message) => {
+    if (message.author.bot || !config.notifRole) { return; }
+    
+    const member = app.guilds.get(config.postGuild).members.get(message.author.id);
+    const hasRole = !!member.roles.get(config.notifRole);
+
+    // Subscribe to alerts
+    if (message.content.toLowerCase() === "subscribe") {
+        if (hasRole) { return message.author.send("You are already subscribed to Hytale blog alerts!"); }
+
+        member.addRole(config.notifRole);
+
+        message.author.send("You will now recieve Hytale blog alerts! :)");
+    }
+
+    // Unsubscribe from alerts
+    if (message.content.toLowerCase() === "unsubscribe") {
+        if (!hasRole) { return message.author.send("You aren't subscribed to Hytale blog alerts!"); }
+
+        member.removeRole(config.notifRole);
+
+        message.author.send("You will no longer recieve Hytale blog alerts!");
+    }
+});
+
 app.login(config.token);

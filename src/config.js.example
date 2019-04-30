@@ -19,14 +19,19 @@ module.exports = {
     // MySQL Schema Name
     schema: "hytale",
 
-    // Channel where blogs are posted to
+    // Channel/server where blogs are posted to
     postChannel: "",
+    postGuild: "",
 
     // What to tag, if anything
     // Role: <@&ROLE_ID>
     // Everyone / Here: @everyone / @here
     tag: "",
 
+    // (IF APPLICABLE) Role ID to assign users for notifications
+    notifRole: "",
+
+    // Blog-post embed options
     embed: {
 
         // Settings for the "Author" section of the embed
