@@ -1,0 +1,80 @@
+module.exports = {
+    // Discord bot token
+    token: "",
+
+    // How often (in seconds) to check for new blogs (keep this low, don't spam their servers with requests!)
+    // *20-30 is recommended*
+    checkInterval: 20,
+
+    // MySQL Connection
+    connectionSettings = {
+        connectionLimit: 10,
+        database: "xxxxxxxx",
+        host: "xxx.xxx.xxx.xx",
+        password: "xxxxxxxx",
+        port: 3306,
+        user: "xxxxxxxx"
+    },
+
+    // MySQL Schema Name
+    schema: "hytale",
+
+    // Channel where blogs are posted to
+    postChannel: "",
+
+    // What to tag, if anything
+    // Role: <@&ROLE_ID>
+    // Everyone / Here: @everyone / @here
+    tag: "",
+
+    embed: {
+
+        // Settings for the "Author" section of the embed
+        author: {
+            icon: "https://i.imgur.com/gxobL8j.jpg",
+            name: "BlogCheck"
+        },
+
+        // Color of the embed's sidebar
+        color: "#00FFFF",
+
+        // Auto-react to blog post messages
+        reactions: {
+
+            // Set to false to disable reactions
+            enabled: true,
+
+            // Array of role snowflakes, if any
+            all: [
+                "000000000000000000"
+            ]
+        }
+
+    },
+
+    presence: {
+        message: "for blog posts",
+        type: "WATCHING"
+    }
+}
+
+/*
+*
+*
+* Don't touch ANYTHING below or I'll- I'LL-
+* 
+* be sad :(
+*
+*
+*/
+
+module.exports.url = {
+    ALL_PUBLISHED: "https://hytale.com/api/blog/post/published",
+    BLOG_BASE: "https://hytale.com/news/",
+    COVER_IMG_BASE: "https://hytale.com/m/variants/blog_thumb_"
+};
+
+module.exports.query = {
+    CREATE_BLOG: "INSERT INTO " + module.exports.schema + ".blogs (slug, id, featured, author, title, published_at, created_at, excerpt, tags, image_variants, image_id, image_s3key, image_mime_type, image_attached, image_content_type, image_content_id, image_created_at, image_v) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    GET_ALL_BLOGS: "SELECT * FROM " + module.exports.schema + ".blogs",
+};

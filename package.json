@@ -1,0 +1,17 @@
+{
+  "name": "hytale-blogchek",
+  "version": "1.0.0",
+  "description": "Automatically stores and posts new Hytale Blogs to Discord",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "DanceDog",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "promise-mysql": "^3.3.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
